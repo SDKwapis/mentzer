@@ -14,6 +14,10 @@ class Gym {
     const result = await pool.query('SELECT * FROM gyms WHERE user_id = $1', [userId]);
     return result.rows;
   }
+  static async findById(id) {
+    const result = await pool.query('SELECT * FROM gyms WHERE id = $1', [id]);
+    return result.rows[0];
+  }
 }
 
 module.exports = Gym;
