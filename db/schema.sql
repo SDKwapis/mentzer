@@ -1,0 +1,32 @@
+DROP DATABASE IF EXISTS workout_app_db;
+
+CREATE DATABASE workout_app_db;
+
+\c workout_app_db;
+
+CREATE TABLE IF NOT EXISTS users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(50) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS gyms (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS equipment (
+  id SERIAL PRIMARY KEY,
+  gym_id INTEGER REFERENCES gyms(id),
+  name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS workouts (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  gym_id INTEGER REFERENCES gyms(id),
+  date DATE NOT NULL,
+  routine JSONB NOT NULL
+);
+
