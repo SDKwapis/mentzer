@@ -1,7 +1,7 @@
 // routes/equipmentRoutes.js
 const express = require('express');
 const router = express.Router();
-const { addEquipment, getEquipment } = require('../controllers/equipmentController');
+const { addEquipment, getEquipmentByGymId } = require('../controllers/equipmentController');
 const auth = require('../middleware/auth');
 
 // @route   POST api/equipment
@@ -12,6 +12,6 @@ router.post('/', auth, addEquipment);
 // @route   GET api/equipment/:gymId
 // @desc    Get all equipment for a gym
 // @access  Private
-router.get('/:gymId', auth, getEquipment);
+router.get('/:gymId', auth, getEquipmentByGymId );
 
 module.exports = router;
