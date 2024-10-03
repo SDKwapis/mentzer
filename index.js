@@ -6,6 +6,7 @@ require('dotenv').config();
 const authRoutes = require('./routes/authRoutes');
 const gymRoutes = require('./routes/gymRoutes');
 const workoutRoutes = require('./routes/workoutRoutes');
+const equipmentRoutes = require('./routes/equipmentRoutes');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/gyms', gymRoutes);
 app.use('/api/workouts', workoutRoutes);
+app.use('/api/equipment', equipmentRoutes);
 
 // Start Server
 const PORT = process.env.PORT || 5000;
